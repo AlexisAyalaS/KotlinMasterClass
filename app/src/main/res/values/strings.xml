@@ -1,0 +1,28 @@
+<resources>
+    <string name="app_name">MasterClass</string>
+
+    <!--    IMC App-->
+    <string name="male">Hombre</string>
+    <string name="female">Mujer</string>
+    <string name="height">Altura</string>
+    <string name="calculate">Calcular</string>
+    <string name="result">Resultado:</string>
+    <string name="recalculate">Re-Calcular:</string>
+    <string name="error">Error</string>
+    <string name="titleLowWeight">Bajo Peso</string>
+    <string name="descriptionLowWeight">Estas por debajo de lo optimo para tu peso y altura</string>
+    <string name="titleNormalWeight">Normal</string>
+    <string name="descriptionNormalWeight">Estas optimo de acuerdo a tu peso y altura</string>
+    <string name="titleOverWeight">Sobrepeso</string>
+    <string name="descriptionOverWeight">Estas sobre el peso optimo de acuerdo a tu peso y altura</string>
+    <string name="titleObesityWeight">Obesidad</string>
+    <string name="descriptionObesityWeight">Estas MUY encima del peso optimo de acuerdo a tu peso y altura</string>
+
+
+    <!-- To do App-->
+    <string name="todo_title">Bienvenidos Alex</string>
+    <string name="todo_categories">Categorias</string>
+
+    <string name="todo_tasks">Tareas</string>
+
+</resources>
