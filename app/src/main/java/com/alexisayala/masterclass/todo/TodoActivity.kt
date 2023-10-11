@@ -14,14 +14,14 @@ import com.alexisayala.masterclass.todo.TaskCategories.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class TodoActivity : AppCompatActivity() {
-    private val categories = listOf(
+    private var categories = listOf(
         Personal, Business, Other
     )
 
     private val tasks = mutableListOf(
-        Tasks(name = "BusinessTest", Business),
-        Tasks(name = "PersonalTest", Personal),
-        Tasks(name = "OtherTest", Other)
+        Tasks(name = "Business", Business),
+        Tasks(name = "Personal", Personal),
+        Tasks(name = "Other", Other)
     )
     private lateinit var recicleViewCategories: RecyclerView
     private lateinit var categoriesAdapter: CategoriesAdapter
@@ -49,14 +49,20 @@ class TodoActivity : AppCompatActivity() {
     }
 
     private fun initUI() {
-        categoriesAdapter = CategoriesAdapter(categories)
+        categoriesAdapter = CategoriesAdapter(categories) { position -> updateCategories(position) }
         recicleViewCategories.layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recicleViewCategories.adapter = categoriesAdapter
 
-        tasksAdapter = TaskAdapter(tasks)
+        tasksAdapter = TaskAdapter(tasks) { onItemSelected(it) }
         rvTasks.layoutManager = LinearLayoutManager(this)
         rvTasks.adapter = tasksAdapter
+    }
+
+
+    private fun onItemSelected(position: Int) {
+        tasks[position].isSelected = !tasks[position].isSelected
+        updateTask()
     }
 
     private fun initListeners() {
@@ -94,7 +100,16 @@ class TodoActivity : AppCompatActivity() {
         dialog.show()
     }
 
+    private fun updateCategories(position: Int) {
+        categories[position].isSelected = !categories[position].isSelected
+        categoriesAdapter.notifyItemChanged(position)
+        updateTask()
+    }
+
     private fun updateTask() {
+        val selectedCategories: List<TaskCategories> = categories.filter { it.isSelected }
+        val newTasks = tasks.filter { selectedCategories.contains(it.category) }
+        tasksAdapter.tasks = newTasks
         tasksAdapter.notifyDataSetChanged()
     }
 }
