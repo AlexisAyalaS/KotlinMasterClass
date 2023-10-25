@@ -30,4 +30,5 @@
     <string name="dialog_personal">Personal</string>
     <string name="dialog_others">Otros</string>
     <string name="dialog_add_task">Crear tarea</string>
+    <string name="superhero">superhero</string>
 </resources>
